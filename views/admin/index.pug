@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h1= title
+  nav
+    ul
+      li
+        a(href='admin/news/add') Add new article
+  table
+    tr
+      th ID
+      th Title
+      th Crated
+      th Action
+    each item, index in data
+      tr
+        td=index+1
+        td=item.title
+        td=item.created
+        td
+          a(href=`/admin/news/delete/${item._id}`) Delete
