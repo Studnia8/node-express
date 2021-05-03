@@ -68,6 +68,7 @@ router.post('/news/add', (req, res) => {
 });
 
 router.get('/news/delete/:id', (req, res) => {
+    const id = req.params.id;
     res.redirect('/admin');
     client.connect(err => {
         if (err) {
@@ -75,7 +76,7 @@ router.get('/news/delete/:id', (req, res) => {
         } else {
             const db = client.db('service');
             const articles = db.collection('articles');
-            articles.deleteOne({ _id: mongo.ObjectID(req.params.id) });
+            articles.deleteOne({ _id: mongo.ObjectID(id) });
         }
     });
 });
