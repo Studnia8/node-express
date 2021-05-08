@@ -1,9 +1,6 @@
 const express = require('express');
 const News = require('../module/new');
-const mongo = require('mongodb');
 const router = express.Router();
-
-const client = new mongo.MongoClient('mongodb://localhost:27017', { useNewUrlParser: true });
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
