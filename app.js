@@ -5,17 +5,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sessionConfig = require('./config');
-var mongo = require('mongodb');
+var mongoose = require('mongoose');
 
-var client = new mongo.MongoClient('mongodb://localhost:27017', { useNewUrlParser: true });
-client.connect(err => {
-    if (err) {
-        console.log('connection error');
-    } else {
-        console.log('connection successful');
-    }
-    client.close();
-});
+mongoose.connect(sessionConfig.db, { useNewUrlParser: true });
 
 var indexRouter = require('./routes/index');
 var newsRouter = require('./routes/news');
